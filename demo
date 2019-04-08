@@ -1,0 +1,258 @@
+<html>
+  <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+  <body>
+    <div id="contain5">
+    <div id="canvas-holder" style="float:left;">
+     <canvas id="myChartPol" width="260" height="250"></canvas></div>
+    <div id="canvas-holder-keymsg" style="float:right;">
+      <canvas id="myChartRel" width="260" height="250"></canvas></div>
+      <div id="canvas-holder-keymsg" style="float:right;">
+        <canvas id="myChartTest" width="260" height="250"></canvas></div>
+</div>
+<p>
+<div id="contain2">
+<div id="canvas-holder" style="align:center;">
+  <canvas id="myChartDrug" position="relative" width="800" height="350"></canvas></div>
+</div>
+<p>
+  <div id="contain3">
+  <div id="canvas" style="float:left;">
+   <canvas id="myChartOS" width="400" height="350"></canvas></div>
+  <div id="canvas" style="float:right;">
+    <canvas id="myChartCell" width="400" height="350"></canvas></div>
+  </div>
+<script>
+new Chart(document.getElementById("myChartPol"), {
+    type: 'pie',
+    data: {
+      labels: ["Very Liberal", "Somewhat Liberal", "Moderate", "Somewhat Conservative", "Conservative"],
+      datasets: [
+        {
+          label: "Number of participants",
+          backgroundColor: ["#6495EC", "#9185CF", "#A87DC1", "#BE75BE", "#EC6495"],
+          data: [68, 103, 45, 21, 9]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Political Beliefs'
+      },
+      tooltips: {
+			callbacks: {
+				label: function(tooltipItem, data) {
+					var allData = data.datasets[tooltipItem.datasetIndex].data;
+					var tooltipLabel = data.labels[tooltipItem.index];
+					var tooltipData = allData[tooltipItem.index];
+					var total = 0;
+					for (var i in allData) {
+						total += allData[i];
+					}
+					var tooltipPercentage = Math.round((tooltipData / total) * 100);
+					return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+				}
+			}
+    }
+    }
+});
+new Chart(document.getElementById("myChartRel"), {
+    type: 'pie',
+    data: {
+      labels: ["Agnostic", "Protestant", "Atheist", "Catholic", "Other", "Jewish", "Hindu", "Buddhist", "Muslim", "Mormon"],
+      datasets: [
+        {
+          label: "Number of participants",
+          backgroundColor: ["#EC6495", "#D56DA4", "#BE75BE", "#A87DC1", "#9185CF", "#7A8DDE", "#6495EC", "#90B3F1", "#BCD1F6"],
+          data: [51, 45, 35, 34, 30, 20, 17, 6, 5, 1]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Religious Beliefs'
+      },
+      tooltips: {
+			callbacks: {
+				label: function(tooltipItem, data) {
+					var allData = data.datasets[tooltipItem.datasetIndex].data;
+					var tooltipLabel = data.labels[tooltipItem.index];
+					var tooltipData = allData[tooltipItem.index];
+					var total = 0;
+					for (var i in allData) {
+						total += allData[i];
+					}
+					var tooltipPercentage = Math.round((tooltipData / total) * 100);
+					return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+				}
+			}
+    }
+    }
+});
+new Chart(document.getElementById("myChartTest"), {
+    type: 'pie',
+    data: {
+      labels: ["Yes", "No", "No Opinion"],
+      datasets: [
+        {
+          label: "Number of participants",
+          backgroundColor: ["#EC6495", "#A87DC1", "#6495EC"],
+          data: [124,	63, 71]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Should Duke require SAT/ACT?'
+      },
+      tooltips: {
+			callbacks: {
+				label: function(tooltipItem, data) {
+					var allData = data.datasets[tooltipItem.datasetIndex].data;
+					var tooltipLabel = data.labels[tooltipItem.index];
+					var tooltipData = allData[tooltipItem.index];
+					var total = 0;
+					for (var i in allData) {
+						total += allData[i];
+					}
+					var tooltipPercentage = Math.round((tooltipData / total) * 100);
+					return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+				}
+			}
+    }
+    }
+});
+new Chart(document.getElementById("myChartDrug"), {
+    type: 'bar',
+    data: {
+      labels: ["Drank Alcohol", "Had Sex", "Used Drugs", "Obtained a Fake ID"],
+      datasets: [
+        {
+          label: "Number of participants",
+          backgroundColor: ["#6495EC", "#9185CF", "#BE75BE", "#EC6495"],
+          data: [133, 42, 63, 24]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Experiences'
+      },
+      scales: {
+    xAxes: [{
+                gridLines: {
+                    display:false
+                }
+            }],
+    yAxes: [{
+                gridLines: {
+                    display:false
+                }
+            }]
+    },
+      tooltips: {
+			callbacks: {
+				label: function(tooltipItem, data) {
+					var allData = data.datasets[tooltipItem.datasetIndex].data;
+					var tooltipLabel = data.labels[tooltipItem.index];
+					var tooltipData = allData[tooltipItem.index];
+					var total = 0;
+					for (var i in allData) {
+						total += allData[i];
+					}
+					var tooltipPercentage = Math.round((tooltipData / total) * 100);
+					return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+				}
+			}
+    }
+    }
+});
+new Chart(document.getElementById("myChartOS"), {
+    type: 'doughnut',
+    data: {
+      labels: ["Mac", "Windows", "Other"],
+      datasets: [
+        {
+          label: "Number of participants",
+          backgroundColor: ["#EC6495", "#A87DC1", "#6495EC"],
+          data: [161,	82, 1]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Choice of Operating System'
+      },
+      tooltips: {
+			callbacks: {
+				label: function(tooltipItem, data) {
+					var allData = data.datasets[tooltipItem.datasetIndex].data;
+					var tooltipLabel = data.labels[tooltipItem.index];
+					var tooltipData = allData[tooltipItem.index];
+					var total = 0;
+					for (var i in allData) {
+						total += allData[i];
+					}
+					var tooltipPercentage = Math.round((tooltipData / total) * 100);
+					return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+				}
+			}
+    }
+    }
+});
+new Chart(document.getElementById("myChartCell"), {
+    type: 'doughnut',
+    data: {
+      labels: ["IPhone", "Android", "Different Smartphone", "Windows", "Non-Smart Phone"],
+      datasets: [
+        {
+          label: "Number of participants",
+          backgroundColor: ["#6495EC", "#9185CF", "#A87DC1", "#BE75BE", "#EC6495"],
+          data: [197, 41, 3, 1, 1]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Choice of Cell Phone'
+      },
+      tooltips: {
+			callbacks: {
+				label: function(tooltipItem, data) {
+					var allData = data.datasets[tooltipItem.datasetIndex].data;
+					var tooltipLabel = data.labels[tooltipItem.index];
+					var tooltipData = allData[tooltipItem.index];
+					var total = 0;
+					for (var i in allData) {
+						total += allData[i];
+					}
+					var tooltipPercentage = Math.round((tooltipData / total) * 100);
+					return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+				}
+			}
+    }
+    }
+});
+</script>
+  </body>
+</html>
